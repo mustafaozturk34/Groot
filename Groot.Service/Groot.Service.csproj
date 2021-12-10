@@ -4,4 +4,18 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Product\" />
+    <Folder Include="Category\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Groot.DB\Groot.DB.csproj" />
+    <ProjectReference Include="..\Groot.Model\Groot.Model.csproj" />
+  </ItemGroup>
+
 </Project>
