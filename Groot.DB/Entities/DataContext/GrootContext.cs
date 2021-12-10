@@ -69,8 +69,6 @@ namespace Groot.DB.Entities.DataContext
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -80,8 +78,6 @@ namespace Groot.DB.Entities.DataContext
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Idate)
                     .HasColumnType("datetime")
@@ -105,13 +101,13 @@ namespace Groot.DB.Entities.DataContext
                 entity.Property(e => e.Uuser).HasColumnName("UUSer");
 
                 entity.HasOne(d => d.Category)
-                    .WithMany()
+                    .WithMany(p => p.Product)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Product_Category");
 
                 entity.HasOne(d => d.IuserNavigation)
-                    .WithMany()
+                    .WithMany(p => p.Product)
                     .HasForeignKey(d => d.Iuser)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Product_User");

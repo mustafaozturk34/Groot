@@ -1,5 +1,7 @@
 using AutoMapper;
 using Groot.API.Infrastructer;
+using Groot.Service.Category;
+using Groot.Service.Product;
 using Groot.Service.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +36,8 @@ namespace Groot.API
             services.AddSingleton(mapper);
 
             services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<ICategoryService, CategoryService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
